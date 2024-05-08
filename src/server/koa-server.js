@@ -1,9 +1,14 @@
 const Koa = require('koa');
-const koaInstance = new Koa();
+
+const serve = require('koa-static');
 
 import { createApp } from '../app.js';
 import { renderToString } from 'vue/server-renderer'
 
+const koaInstance = new Koa();
+
+
+koaInstance.use(serve('./'));
 
 // Middleware
 koaInstance.use(async (ctx, next) => {
@@ -19,6 +24,8 @@ koaInstance.use(async (ctx, next) => {
         </head>
         <body>
         <div id="app">${vueContent}</div>
+        <div>需要手动导入（服务器设置静态资源）</div>
+        <script src="./hydrateClient.js"></script>
         </body>
         </html>
     `;

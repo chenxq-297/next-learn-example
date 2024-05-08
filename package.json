@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build --config src/config/vite.config.js",
-    "rollup-build": "npx rollup --config src/config/rollup.config.js --bundleConfigAsCjs"
+    "rollup-build": "npx rollup --config src/config/rollup.config.js --bundleConfigAsCjs",
+    "rollup-build:hydrated": "npx rollup --config src/config/hydrateRollup.config.js --bundleConfigAsCjs"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +18,12 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "koa": "^2.15.3",
+    "koa-static": "^5.0.0",
     "rollup": "^4.17.2",
     "vue": "^3.4.27"
   },
   "devDependencies": {
+    "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4"
   }
 }

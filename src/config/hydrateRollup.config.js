@@ -7,9 +7,9 @@ import replace from '@rollup/plugin-replace';
 
 export default {
     treeshake: true, //默认true
-    input: 'src/server/koa-server.js',
+    input: 'src/hydrate.js',
     output: {
-        file: 'dist/bundle.js',
+        file: 'dist/hydrateClient.js',
         format: 'cjs'
     },
     plugins: [
@@ -20,11 +20,12 @@ export default {
         commonjs(), // 添加 commonjs 插件 npm第三方老包
         terser(), // 添加 terser 插件进行压缩 丑化
         vue(), //vue3插件 https://www.npmjs.com/package/@vitejs/plugin-vue
-        replace({ //消除生产环境警告
+        //打rollup包vue实例（hydrate）时 针对浏览器缺少process变量 配置插件模拟变量
+        replace({
+            'process.env.NODE_ENV': JSON.stringify('production'), // 模拟生产环境
             __VUE_OPTIONS_API__: JSON.stringify(true), // 启用 Options API
             __VUE_PROD_DEVTOOLS__: JSON.stringify(false), // 禁用开发环境下的 Vue Devtools
             __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(true) // 启用生产环境下的水合不匹配详情
         })
     ],
-    external: ["koa"],
 };
