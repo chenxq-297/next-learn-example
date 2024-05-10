@@ -5,6 +5,8 @@ import terser from '@rollup/plugin-terser';
 import vue from '@vitejs/plugin-vue'
 import replace from '@rollup/plugin-replace';
 
+// const path = require('path');
+
 export default {
     treeshake: true, //默认true
     input: 'src/server/koa-server.js',
@@ -14,7 +16,10 @@ export default {
     },
     plugins: [
         resolve({
-            extensions: ['.js', '.jsx', '.json', '.vue'] //配置省略后缀 rollup非自带功能 而是这个插件功能
+            extensions: ['.js', '.jsx', '.json', '.vue'], //配置省略后缀 rollup非自带功能 而是这个插件功能
+            // alias: {
+            //     '@': path.resolve(__dirname, '../../src'), // 设置 '@' 别名指向 'src' 目录的绝对路径
+            // }
         }), //可以让 Rollup 找到外部模块
         json(),  // 打包koa报错
         commonjs(), // 添加 commonjs 插件 npm第三方老包
