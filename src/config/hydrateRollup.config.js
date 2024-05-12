@@ -11,7 +11,7 @@ export default {
     treeshake: true, //默认true
     input: 'src/hydrate.js',
     output: {
-        file: 'dist/hydrateClient.js',
+        dir: 'dist',
         format: 'cjs'
     },
     plugins: [

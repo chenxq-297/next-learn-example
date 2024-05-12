@@ -8,15 +8,15 @@ import replace from '@rollup/plugin-replace';
 // const path = require('path');
 
 export default {
-    treeshake: true, //默认true
-    // input: 'src/server/koa-server.js',
+    // treeshake: true, //默认true
+    input: 'src/server/koa-server.js',
     output: {
-        input: 'src/server/koa-server.js',
+    // input: '/src/server/koa-server.js',
         // input: 'src/main.js',
-        output: {
-            dir: '/dist', // 指定输出目录
-            format: 'cjs' // 指定输出格式为 ES 模块
-        }
+        dir: 'dist', // 指定输出目录
+        // file: 'dist/bundle.js',
+        // inlineDynamicImports: true, // Inline dynamic imports
+        format: 'cjs' // 指定输出格式为 ES 模块
         // file: 'dist/bundle.js',
         // format: 'es',
         // inlineDynamicImports: true // 启用内联动态导入
@@ -24,6 +24,7 @@ export default {
     plugins: [
         resolve({
             extensions: ['.js', '.jsx', '.json', '.vue'], //配置省略后缀 rollup非自带功能 而是这个插件功能
+            // preventAssignment: true
             // alias: {
             //     '@': path.resolve(__dirname, '../../src'), // 设置 '@' 别名指向 'src' 目录的绝对路径
             // }
