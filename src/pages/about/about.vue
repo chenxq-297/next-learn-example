@@ -8,14 +8,7 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useCounterStore } from '../../stores/counter';
-
-const { state } = storeToRefs(useCounterStore());
+import uesSomeDate from '../../store/SomeData.js';
+const someDateStore = uesSomeDate();
+const { state } = storeToRefs(someDateStore);
 </script>
-
-<style scoped>
-.home {
-  text-align: center;
-  margin-top: 40px;
-}
-</style>

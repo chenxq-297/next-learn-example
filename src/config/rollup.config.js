@@ -9,10 +9,17 @@ import replace from '@rollup/plugin-replace';
 
 export default {
     treeshake: true, //默认true
-    input: 'src/server/koa-server.js',
+    // input: 'src/server/koa-server.js',
     output: {
-        file: 'dist/bundle.js',
-        format: 'cjs'
+        input: 'src/server/koa-server.js',
+        // input: 'src/main.js',
+        output: {
+            dir: '/dist', // 指定输出目录
+            format: 'cjs' // 指定输出格式为 ES 模块
+        }
+        // file: 'dist/bundle.js',
+        // format: 'es',
+        // inlineDynamicImports: true // 启用内联动态导入
     },
     plugins: [
         resolve({
